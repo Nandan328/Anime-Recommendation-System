@@ -1,0 +1,372 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #121212;
+  --primary: #ad9aff;
+  --accent: #ff6b6b;
+  --text-color: #f5f5f5;
+  --text-secondary: #b3b3b3;
+  --shadow: 0 4px 12px rgba(173, 154, 255, 0.2);
+  --dark-shadow: 0 10px 24px rgba(173, 154, 255, 0.4);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 1rem;
+}
+
+.navbar-outer{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--background);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .8rem;
+}
+
+.navbar h1{
+  font-size: 1.7rem;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  color: transparent;
+  background-clip: text;
+}
+
+.search input,
+.search button {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.search input {
+  background: none;
+  border: 1px solid var(--primary);
+  color: var(--text-color);
+  border-radius: 2rem 0 0 2rem;
+  outline: none;
+}
+
+.search button {
+  border: 1px solid var(--primary);
+  background-color: var(--primary);
+  border-radius: 0 2rem 2rem 0;
+  cursor: pointer;
+  outline: none;
+}
+.nav-links a {
+  margin: 0 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.head {
+  text-align: center;
+  margin: 1rem;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: transparent;
+  background-clip: text;
+}
+
+.card {
+  max-width: 200px;
+  background-color: black;
+  margin: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--dark-shadow);
+}
+
+.card img {
+  width: 200px;
+  height: 270px;
+  object-fit: fill;
+  border-radius: 1rem 1rem 0px 0px;
+}
+
+.card-info {
+  padding: 1rem;
+}
+
+.card-info h1,
+.card-info p {
+  margin: 0.1rem;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.anime-page {
+  margin: 2rem;
+  display: flex;
+}
+
+.anime-img img {
+  width: 300px;
+  height: 400px;
+  object-fit: fill;
+  margin: 1rem;
+}
+
+.anime-info {
+  margin: 1rem;
+}
+
+.anime-info h1 {
+  font-size: 2.5rem;
+}
+
+.anime-info span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.anime-info div {
+  margin-bottom: 1rem;
+}
+
+.anime-info .genres {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.anime-info .genre {
+  font-weight: normal;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background-color: rgba(123, 104, 238, 0.1);
+  border: 1px solid var(--primary);
+  margin: 0 0.2rem;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.anime-info .genre:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.anime-info .watch-now {
+  width: fit-content;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary);
+  border-radius: 2rem;
+  color: var(--background);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.anime-info .watch-now:hover {
+  transform: translateY(-3px);
+}
+
+.error {
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem;
+}
+
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem;
+  height: 350px;
+}
+
+.recommendations input {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.recommendations button {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.recommendations .suggestions {
+  width: 550px;
+  max-height: 220px;
+  background-color: var(--background);
+  border: 1px solid var(--primary);
+  border-top: none;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  display: none;
+  overflow: hidden;
+}
+
+.recommendations .suggestions.active {
+  display: block;
+}
+
+.recommendations .suggestions div {
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.recommendations .suggestions div:hover {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.RecLoader {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 850px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .head {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .card-info {
+    padding: 0.5rem;
+  }
+
+  .card {
+    max-width: 180px;
+    margin: 1rem;
+  }
+
+  .card img {
+    width: 180px;
+    height: 250px;
+  }
+
+  .anime-page {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .anime-info {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .genres {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .genre {
+    margin: 0.5rem;
+    width: fit-content;
+  }
+
+  .genres div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .search {
+    order: 2;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .nav-links {
+    order: 1;
+    width: fit-content;
+  }
+
+  .recommendations {
+    margin: 1rem auto;
+    max-width: 100%;
+  }
+
+  .recommendations h1{
+    font-size: 1.2rem;
+  }
+
+  .recommendations input,
+  .recommendations button {
+    font-size: 1.2rem;
+    padding: 0.6rem;
+  }
+
+  .recommendations .suggestions {
+    max-height: 150px;
+    max-width: 365px;
+  }
+
+  .recommendations .suggestions div {
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+}
