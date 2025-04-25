@@ -1,5 +1,5 @@
 const child_process = require("child_process");
-const pythonCmd = process.env.PYTHON_CMD || "python";
+const pythonCmd = process.env.PYTHON_CMD || "python3";
 const path = require("path")
 
 const getRecommendations = (animes) => {
@@ -21,6 +21,7 @@ const getRecommendations = (animes) => {
     });
     res.on("close", (code) => {
       if (code !== 0 || error) {
+        console.error(`Python stderr: ${error}`);
         reject(`Process exited with code ${code}. Error: ${error}`);
       } else {
         let s = output.replace(/[\[\]']/g, "").trim();
