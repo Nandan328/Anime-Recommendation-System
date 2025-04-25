@@ -10,9 +10,11 @@ const getRecommendations = (animes) => {
       resolve(s);
     });
     res.stderr.on("data", (data) => {
+      console.error(`stderr: ${data}`);
       reject(data.toString());
     });
     res.on("error", (err) => {
+      console.error(`Error: ${err}`);
       reject(err);
     });
     res.on("close", (code) => {
