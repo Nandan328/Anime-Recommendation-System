@@ -20,8 +20,11 @@ const getRecommendations = (animes) => {
       reject(err);
     });
     res.on("close", (code) => {
-      if (code !== 0) {
-        reject(`Process exited with code ${code}`);
+      if (code !== 0 || error) {
+        reject(`Process exited with code ${code}. Error: ${error}`);
+      } else {
+        let s = output.replace(/[\[\]']/g, "").trim();
+        resolve(s);
       }
     });
   });
