@@ -6,14 +6,14 @@ const getRecommendations = (animes) => {
   return new Promise((resolve, reject) => {
     const filepath = path.join(__dirname, "model", "util.py");
     const res = child_process.spawn(pythonCmd, [filepath, animes]);
-    console.log(filepath)
+    let output = "";
+    let error = "";
+
     res.stdout.on("data", (data) => {
-      let s = data.toString().replace(/[\[\]']/g, "").trim();
-      resolve(s);
+      output += data.toString();
     });
     res.stderr.on("data", (data) => {
-      console.error(`stderr: ${data}`);
-      reject(data.toString());
+      error += data.toString();
     });
     res.on("error", (err) => {
       console.error(`Error: ${err}`);
