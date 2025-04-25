@@ -9,17 +9,18 @@ const getRecommendations = (animes) => {
     let output = "";
     let error = "";
 
-    res.stdout.on("data", (data) => {
-      output += data.toString();
-    });
     res.stderr.on("data", (data) => {
       error += data.toString();
+      console.error(`Python stderr: ${data.toString()}`);
     });
+
     res.on("error", (err) => {
-      console.error(`Error: ${err}`);
+      console.error("Failed to start subprocess:", err);
       reject(err);
     });
+
     res.on("close", (code) => {
+      console.log(`Python process exited with code ${code}`);
       if (code !== 0 || error) {
         console.error(`Python stderr: ${error}`);
         reject(`Process exited with code ${code}. Error: ${error}`);
