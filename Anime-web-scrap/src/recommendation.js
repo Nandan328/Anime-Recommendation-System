@@ -1,10 +1,12 @@
 const child_process = require("child_process");
+const pythonCmd = process.env.PYTHON_CMD || "python";
 const path = require("path")
 
 const getRecommendations = (animes) => {
   return new Promise((resolve, reject) => {
     const filepath = path.join(__dirname, "model", "util.py");
-    const res = child_process.spawn("python", [filepath, animes]);
+    const res = child_process.spawn(pythonCmd, [filepath, animes]);
+    console.log(filepath)
     res.stdout.on("data", (data) => {
       let s = data.toString().replace(/[\[\]']/g, "").trim();
       resolve(s);
