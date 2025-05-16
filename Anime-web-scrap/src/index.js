@@ -7,7 +7,7 @@ const {
   getAnimePage,
 } = require("./animeAPI");
 
-const { getRecommendations } = require("./recommendation");
+const { recommendAnimeByName } = require("./model/index");
 
 const port = process.env.PORT || 3000;
 
@@ -59,9 +59,8 @@ app.get("/api/anime", async (req, res) => {
 app.get("/api/recommend", async (req, res) => {
   const { anime } = req.query;
   try {
-    let animes = await getRecommendations(anime);
-    let animeNames = animes.split(",").map((str) => str.trim());
-
+    let animeNames = await recommendAnimeByName(anime);
+    console.log(animeNames);
     const resultsArr = await Promise.all(
       animeNames.map((name) => getSearchedAnime(name).catch(() => []))
     );
